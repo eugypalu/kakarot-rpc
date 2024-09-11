@@ -72,3 +72,7 @@ pub mod hive {
         });
     pub static DEPLOY_WALLET_NONCE: LazyLock<Arc<Mutex<Felt>>> = LazyLock::new(|| Arc::new(Mutex::new(Felt::ZERO)));
 }
+
+#[cfg(feature = "rpc_forwarding")]
+pub static MAIN_RPC_URL: LazyLock<String> =
+    LazyLock::new(|| std::env::var("MAIN_RPC_URL").expect("Missing MAIN_RPC_URL environment variable"));
